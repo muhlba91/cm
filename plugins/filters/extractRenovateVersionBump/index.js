@@ -11,8 +11,9 @@
 module.exports = (desc) => {
     const results = [];
     if (desc && desc !== '""' && desc !== "''") {
+        // TODO: adopted from upstream!
         const regex =
-            /\[[\\]*`([\d\.]+[A-Za-zαß]*)[\\]*` -> [\\]*`([\d\.]+[A-Za-zαß]*)[\\]*`\]/g;
+            /\|.*`v?([\d\.]+[A-Za-zαß]*)[\]*` -> [\\]*`v?([\d\.]+[A-Za-zαß]*)`.*\|/g;
         let matches = null;
         do {
             matches = regex.exec(desc);

@@ -30,7 +30,7 @@ on:
         default: ''
 
 jobs:
-  gitStream:
+  git-stream:
     runs-on: ubuntu-latest
     name: gitStream
     timeout-minutes: 5
