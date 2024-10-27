@@ -1,7 +1,7 @@
 ---
 name: gitStream
 run-name: |
-  /:\ gitStream: PR #${{ fromJSON(fromJSON(github.event.inputs.client_payload)).pullRequestNumber }} from ${{ github.event.inputs.full_repository }}
+  gitStream: PR #${{ fromJSON(fromJSON(github.event.inputs.client_payload)).pullRequestNumber }} from ${{ github.event.inputs.full_repository }}
 
 on:
   workflow_dispatch:

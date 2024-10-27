@@ -7,3 +7,5 @@ config:
   admin:
     users:
       - muhlba91
+
+automations: []
