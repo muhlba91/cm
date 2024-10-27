@@ -12,6 +12,7 @@ automations:
       - {{ branch.num_of_commits == 1 }}
       - {{ not (branch.name | includes(term="siderolabs")) }}
       - {{ not (branch.name | includes(term="k0sproject")) }}
+      - {{ not (branch.name | includes(term="mailcow-dockerized")) }}
     run:
       - action: approve@v1
       - action: merge@v1
