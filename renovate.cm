@@ -1,0 +1,36 @@
+# -*- mode: yaml -*-
+---
+manifest:
+  version: 1.0
+
+automations:
+  merge_renovate_minor:
+    if:
+      - {{ bump == 'minor' }}
+      - {{ branch.name | includes(term="renovate") }}
+      - {{ branch.author | includes(term="renovate") }}
+      - {{ branch.num_of_commits == 1 }}
+      - {{ branch.name | includes(term="siderolabs") | nope }}
+      - {{ branch.name | includes(term="k0sproject") | nope }}
+    run:
+      - action: approve@v1
+      - action: merge@v1
+      - action: add-comment@v1
+        args:
+          comment: |
+            Renovate `minor` version bumps are approved and merged automatically.
+
+  merge_renovate_minor_patch:
+    if:
+      - {{ bump == 'patch' }}
+      - {{ branch.name | includes(term="renovate") }}
+      - {{ branch.author | includes(term="renovate") }}
+    run:
+      - action: approve@v1
+      - action: merge@v1
+      - action: add-comment@v1
+        args:
+          comment: |
+            Renovate `patch` version bumps are approved and merged automatically.
+
+bump: {{ pr.description | extractRenovateVersionBump | compareMultiSemver }}
