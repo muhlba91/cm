@@ -10,8 +10,8 @@ automations:
       - {{ branch.name | includes(term="renovate") }}
       - {{ branch.author | includes(term="renovate") }}
       - {{ branch.num_of_commits == 1 }}
-      - {{ branch.name | includes(term="siderolabs") | nope }}
-      - {{ branch.name | includes(term="k0sproject") | nope }}
+      - {{ not (branch.name | includes(term="siderolabs")) }}
+      - {{ not (branch.name | includes(term="k0sproject")) }}
     run:
       - action: approve@v1
       - action: merge@v1
