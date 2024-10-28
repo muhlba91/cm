@@ -3,8 +3,15 @@
 manifest:
   version: 1.0
 
+triggers:
+  exclude:
+    repository:
+      - homelab-home-cluster-applications
+      - muehlbachler-public-services-cluster-applications
+      - fh-burgenland-bswe-cluster-applications
+
 automations:
-  merge_renovate_minor:
+  merge_renovate_minor_patch:
     if:
       - {{ bump == 'minor' or bump == 'patch' }}
       - {{ branch.name | includes(term="renovate") }}
