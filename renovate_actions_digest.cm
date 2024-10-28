@@ -22,4 +22,4 @@ automations:
 
 is:
   renovate: {{ (branch.name | includes(term="renovate")) and (branch.author | includes(term="renovate")) }}
-  actions_digest: {{ (branch.name | includes(term="digest)) and (files | match(regex=r/\.github\//) | every) }}
+  actions_digest: {{ (branch.name | includes(term="digest")) and (files | match(regex=r/\.github\//) | every) }}
