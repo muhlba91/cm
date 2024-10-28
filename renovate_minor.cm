@@ -11,15 +11,14 @@ triggers:
       - fh-burgenland-bswe-cluster-applications
 
 automations:
-  merge_renovate_minor_patch:
+  merge_renovate_minor:
     if:
-      - {{ bump == 'minor' or bump == 'patch' }}
-      - {{ branch.name | includes(term="renovate") }}
-      - {{ branch.author | includes(term="renovate") }}
+      - {{ bump == 'minor' }}
+      - {{ is.renovate }}
+      - {{ not is.siderolabs }}
+      - {{ not is.k0s }}
+      - {{ not is.mailcow }}
       - {{ branch.num_of_commits == 1 }}
-      - {{ not (branch.name | includes(term="siderolabs")) }}
-      - {{ not (branch.name | includes(term="k0sproject")) }}
-      - {{ not (branch.name | includes(term="mailcow-dockerized")) }}
     run:
       - action: approve@v1
       - action: merge@v1
@@ -29,6 +28,12 @@ automations:
       - action: add-comment@v1
         args:
           comment: |
-            Renovate `minor` and `patch` version bumps are approved and merged automatically.
+            Renovate `minor` version bumps are approved and merged automatically.
 
 bump: {{ pr.description | extractRenovateVersionBump | compareMultiSemver }}
+
+is:
+  renovate: {{ (branch.name | includes(term="renovate")) and (branch.author | includes(term="renovate")) }}
+  siderolabs: {{ branch.name | includes(term="siderolabs") }}
+  k0s: {{ branch.name | includes(term="k0sproject") }}
+  mailcow: {{ branch.name | includes(term="mailcow-dockerized") }}
