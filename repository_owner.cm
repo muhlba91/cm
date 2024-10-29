@@ -1,0 +1,18 @@
+# -*- mode: yaml -*-
+---
+manifest:
+  version: 1.0
+
+automations:
+  approve_repository_owner:
+    if:
+      - {{ pr.author == repo.owner }}
+    run:
+      - action: approve@v1
+      - action: add-label@v1
+        args:
+          label: repository-owner
+      - action: add-comment@v1
+        args:
+          comment: |
+            Pull requests from the repository owner are approved automatically.
