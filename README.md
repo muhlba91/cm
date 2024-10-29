@@ -19,7 +19,7 @@ To run the configuration, `.github/workflows/gitstream.yml` is used.
 ### List of Configurations
 
 - [`renovate_github_actions.cm`](renovate_github_actions.cm)
-  - auto-approves and merges updtes to GitHub Actions workflows
+  - auto-approves and merges updates to GitHub Actions workflows
 - [`renovate_minor.cm`](renovate_minor.cm)
   - auto-approves and merges minor updates
   - excludes Kubernetes GitOps repositories
