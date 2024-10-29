@@ -15,7 +15,7 @@
     ],
     "github-actions": {
         "ignoreUnstable": false,
-        "respectLatest": false,
+        "versioning": "semver",
         "fileMatch": [
             "^(workflow-templates|\\.github/workflows)/[^/]+\\.ya?ml$",
             "(^|/)action\\.ya?ml$"
