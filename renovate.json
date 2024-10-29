@@ -2,6 +2,7 @@
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": [
         "config:base",
+        "helpers:pinGitHubActionDigests",
         ":dependencyDashboard",
         ":semanticCommitTypeAll(chore)"
     ],
@@ -26,6 +27,6 @@
         "enabled": true,
         "fileMatch": [
             "(^|/)\\.pre-commit-config\\.ya?ml$"
-        ],
+        ]
     }
 }
