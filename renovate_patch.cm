@@ -14,6 +14,9 @@ automations:
       - {{ branch.num_of_commits == 1 }}
     run:
       - action: approve@v1
+      - action: add-label@v1
+        args:
+          label: renovate-patch
       - action: merge@v1
         args:
           wait_for_all_checks: true
