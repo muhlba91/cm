@@ -11,7 +11,8 @@
         "main"
     ],
     "enabledManagers": [
-        "github-actions"
+        "github-actions",
+        "pre-commit"
     ],
     "github-actions": {
         "ignoreUnstable": false,
@@ -20,5 +21,11 @@
             "^(workflow-templates|\\.github/workflows)/[^/]+\\.ya?ml$",
             "(^|/)action\\.ya?ml$"
         ]
+    },
+    "pre-commit": {
+        "enabled": true,
+        "fileMatch": [
+            "(^|/)\\.pre-commit-config\\.ya?ml$"
+        ],
     }
 }
