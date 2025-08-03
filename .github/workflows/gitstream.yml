@@ -39,7 +39,7 @@ jobs:
         with:
           egress-policy: audit
 
-      - uses: linear-b/gitstream-github-action@fbc62a381e6e5e5fbc991273d662a6a9e3608973 # 2.0.145
+      - uses: linear-b/gitstream-github-action@2c28e3a186201246af013191d517ec1812c06f7b # 2.0.146
         id: rules-engine
         with:
           full_repository: ${{ github.event.inputs.full_repository }}
